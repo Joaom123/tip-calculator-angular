@@ -1,5 +1,26 @@
 .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }
 
 .title {
@@ -8,4 +29,27 @@
 
 .tipCalculator {
   background-color: hsl(0, 0%, 100%);
+  display: flex;
+  padding: 15px 10px 15px;
+  border-radius: 20px;
+}
+
+.tipCalculator__form {
+  padding: 15px 10px 15px;
+}
+
+.tipCalculator__tipDisplay {
+  background-color: var(--very-dark-cyan);
+  border-radius: 20px;
+  padding: 15px 10px 15px;
+}
+
+.tipCalculator__resetButton {
+  width: 100%;
+  border-radius: 10px;
+  color: var(--very-dark-cyan);
+  background-color: var(--strong-cyan);
+  font-weight: 600;
+  font-size: 24px;
+  padding: 10px 0 10px;
 }
