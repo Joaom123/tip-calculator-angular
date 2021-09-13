@@ -25,24 +25,25 @@
         <input type="radio" id="tip50" name="tip" [value]="50" formControlName="tip">
         <label for="tip50">50%</label>
 
-        <!--<input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom">-->
+        <!-- TODO <input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom">-->
       </div>
       <div class="tipCalculatorForm__numberPeople">
         <label for="numberPeople">Number of People</label>
         <input id="numberPeople" type="number" formControlName="numberPeople" [min]="0">
       </div>
     </form>
+
     <!--  right  -->
-    <div class="">
-      <div>
-        <span>Tip Amount</span>
+    <div class="tipCalculator__tipDisplay">
+      <div class="tipCalculator__tipAmount">
+        <div>Tip Amount <span>/ person</span></div>
         <p>{{tipAmount | currency}}</p>
       </div>
-      <div>
-        <span>Total</span>
+      <div class="tipCalculator__total">
+        <div>Total <span>/ person</span></div>
         <p>{{total | currency}}</p>
       </div>
-      <button (click)="reset()">RESET</button>
+      <button class="tipCalculator__resetButton" (click)="reset()">RESET</button>
     </div>
   </div>
 
