@@ -9,10 +9,38 @@
   --light-grayish-cyan2: hsl(189, 41%, 97%);
 }
 
+@font-face {
+  font-family: "space-mono";
+  src: url("./assets/fonts/Space_Mono/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "space-mono-bold";
+  src: url("./assets/fonts/Space_Mono/SpaceMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "space-mono-bold-italic";
+  src: url("./assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "space-mono-bold";
+  src: url("./assets/fonts/Space_Mono/SpaceMono-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
 body {
   background-color: var(--light-grayish-cyan);
   font-size: 24px;
-  font-family: monospace, Monaco, "Lucida Console";
+  font-family: 'space-mono', 'monospace';
 }
 
 .attribution {
