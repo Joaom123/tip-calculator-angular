@@ -30,4 +30,13 @@ describe('AppComponent', () => {
     expect(title?.textContent).toEqual("S P L IT T E R");
   });
 
+  it('should calculateTipAmount', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+
+    expect(app.calculateTipAmount()).toEqual(0);
+  });
+
+  //test reset button
+
 });
