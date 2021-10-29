@@ -10,21 +10,11 @@
                [value]="tipCalculatorForm.get('bill')?.value">
       </div>
       <div class="tipCalculatorForm__tip">
-        <input type="radio" id="tip5" name="tip" [value]="5" formControlName="tip">
-        <label for="tip5">5%</label>
-
-        <input type="radio" id="tip10" name="tip" [value]="10" formControlName="tip">
-        <label for="tip10">10%</label>
-
-        <input type="radio" id="tip15" name="tip" [value]="15" formControlName="tip">
-        <label for="tip15">15%</label>
-
-        <input type="radio" id="tip25" name="tip" [value]="25" formControlName="tip">
-        <label for="tip25">25%</label>
-
-        <input type="radio" id="tip50" name="tip" [value]="50" formControlName="tip">
-        <label for="tip50">50%</label>
-
+        <app-tip-button [tipValue]="5"></app-tip-button>
+        <app-tip-button [tipValue]="10"></app-tip-button>
+        <app-tip-button [tipValue]="15"></app-tip-button>
+        <app-tip-button [tipValue]="25"></app-tip-button>
+        <app-tip-button [tipValue]="50"></app-tip-button>
         <!-- TODO <input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom">-->
       </div>
       <div class="tipCalculatorForm__numberPeople">

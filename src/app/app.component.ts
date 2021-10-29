@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   // Todo: change to currency
   bill: number = 0;
   tip: number = 15;
-  numberPeople: number = 1;
+  numberPeople: number = 0;
   tipAmount: number = this.calculateTipAmount();
   total: number = this.calculateTotal();
 
@@ -25,12 +25,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.tipCalculatorForm.valueChanges.subscribe(selectedValue => {
-      console.log(selectedValue)
       this.tip = this.tipCalculatorForm.get('tip')?.value;
       this.bill = this.tipCalculatorForm.get('bill')?.value;
       this.numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
       this.updateTipAmountAndTotal();
-    })
+    });
   }
 
   calculateTipAmount(): number {
@@ -47,9 +46,11 @@ export class AppComponent implements OnInit {
   }
 
   reset(): void {
-    this.tipCalculatorForm.controls['tip'].setValue(15);
-    this.tipCalculatorForm.controls['bill'].setValue(0);
-    this.tipCalculatorForm.controls['numberPeople'].setValue(1);
+    this.tipCalculatorForm.setValue({
+      tip: 15,
+      bill: 0,
+      numberPeople: 0
+    });
   }
 
 }

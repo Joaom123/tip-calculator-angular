@@ -1,0 +1,19 @@
+input {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+label {
+  cursor: pointer;
+  color: white;
+  background-color: var(--very-dark-cyan);
+  padding: 0.4em 1.2em;
+  border-radius: 0.2em;
+  font-family: space-mono-bold, monospace;
+}
+
+label:hover {
+  background-color: var(--light-cyan);
+  transition: background-color 0.5s ease;
+}
