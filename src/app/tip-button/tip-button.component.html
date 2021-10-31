@@ -1,2 +1,4 @@
-<input type="radio" id="{{'tip' + tipValue}}" name="tip" [value]=tipValue>
-<label for="{{'tip' + tipValue}}">{{tipValue}}%</label>
+<ng-container [formGroup]="parentForm">
+  <input type="radio" id="{{'tip' + tipValue}}" name="tip" [value]=tipValue formControlName="tip">
+  <label for="{{'tip' + tipValue}}">{{tipValue}}%</label>
+</ng-container>

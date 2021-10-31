@@ -33,10 +33,16 @@ export class AppComponent implements OnInit {
   }
 
   calculateTipAmount(): number {
+    if(this.numberPeople === 0)
+      return 0;
+
     return (this.bill * this.tip) / (this.numberPeople * 100);
   }
 
   calculateTotal(): number {
+    if(this.numberPeople === 0)
+      return 0;
+
     return (this.bill / this.numberPeople) + this.calculateTipAmount();
   }
 

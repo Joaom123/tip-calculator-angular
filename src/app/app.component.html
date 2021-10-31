@@ -10,11 +10,11 @@
                [value]="tipCalculatorForm.get('bill')?.value">
       </div>
       <div class="tipCalculatorForm__tip">
-        <app-tip-button [tipValue]="5"></app-tip-button>
-        <app-tip-button [tipValue]="10"></app-tip-button>
-        <app-tip-button [tipValue]="15"></app-tip-button>
-        <app-tip-button [tipValue]="25"></app-tip-button>
-        <app-tip-button [tipValue]="50"></app-tip-button>
+        <app-tip-button [tipValue]="5" [parentForm]="tipCalculatorForm"></app-tip-button>
+        <app-tip-button [tipValue]="10" [parentForm]="tipCalculatorForm"></app-tip-button>
+        <app-tip-button [tipValue]="15" [parentForm]="tipCalculatorForm"></app-tip-button>
+        <app-tip-button [tipValue]="25" [parentForm]="tipCalculatorForm"></app-tip-button>
+        <app-tip-button [tipValue]="50" [parentForm]="tipCalculatorForm"></app-tip-button>
         <!-- TODO <input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom">-->
       </div>
       <div class="tipCalculatorForm__numberPeople">
@@ -26,12 +26,18 @@
     <!--  right  -->
     <div class="tipCalculator__tipDisplay">
       <div class="tipCalculator__tipAmount">
-        <div>Tip Amount <span>/ person</span></div>
-        <p>{{tipAmount | currency}}</p>
+        <div>
+          <p class="tipDisplay__name">Tip Amount</p>
+          <p class="tipDisplay__person">/ person</p>
+        </div>
+        <p class="tipDisplay__value">{{tipAmount | currency}}</p>
       </div>
       <div class="tipCalculator__total">
-        <div>Total <span>/ person</span></div>
-        <p>{{total | currency}}</p>
+        <div>
+          <p class="tipDisplay__name">Total</p>
+          <p class="tipDisplay__person">/ person</p>
+        </div>
+        <p class="tipDisplay__value">{{total | currency}}</p>
       </div>
       <button class="tipCalculator__resetButton" (click)="reset()">RESET</button>
     </div>

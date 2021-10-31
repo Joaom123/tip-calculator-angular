@@ -3,24 +3,12 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  max-width: 720px;
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
+  width: 720px;
 }
 
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1000px;
   }
 }
 
@@ -39,32 +27,30 @@
 }
 
 .tipCalculator__form {
+  flex: 1;
   padding: 15px 10px 15px;
+}
+
+.tipCalculatorForm__bill {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .tipCalculatorForm__bill label {
   margin-bottom: 0.4em;
 }
 
-.tipCalculatorForm__tip input {
-  visibility: hidden;
-  height: 0;
-  width: 0;
-}
-
-.tipCalculatorForm__tip label {
-  cursor: pointer;
-  color: white;
-  background-color: var(--very-dark-cyan);
-  padding: 0.4em 1.2em;
-  border-radius: 0.2em;
-  font-family: space-mono-bold, monospace;
+.tipCalculatorForm__tip {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tipCalculator__tipDisplay {
   background-color: var(--very-dark-cyan);
   border-radius: 20px;
-  padding: 15px 10px 15px;
+  padding: 1em;
+  flex: 1;
 }
 
 .tipCalculator__resetButton {
@@ -77,8 +63,21 @@
   padding: 10px 0 10px;
 }
 
-.tipCalculatorForm__bill {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+.tipDisplay__name {
+  color: white;
+  font-size: 0.7em;
+  font-weight: bold;
 }
+
+.tipDisplay__person {
+  color: var(--dark-grayish-cyan);
+  font-size: 0.6em;
+  font-weight: bold;
+}
+
+.tipDisplay__value {
+  color: var(--strong-cyan);
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
