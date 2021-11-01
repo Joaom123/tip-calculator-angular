@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {CurrencyPipe} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -7,43 +8,51 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // Todo: change to currency
-  bill: number = 0;
-  tip: number = 15;
-  numberPeople: number = 0;
+  tipCalculatorForm: FormGroup = this.formBuilder.group({
+    bill: [0],
+    tip: [15],
+    numberPeople: [0]
+  });
+
+  formattedAmount: any = '';
+  amount: any = '';
   tipAmount: number = this.calculateTipAmount();
   total: number = this.calculateTotal();
 
-  tipCalculatorForm: FormGroup = this.formBuilder.group({
-    bill: new FormControl(this.bill),
-    tip: new FormControl(this.tip),
-    numberPeople: new FormControl(this.numberPeople)
-  });
 
-  constructor(private formBuilder: FormBuilder) {
+  files: File[] = [];
+  filesObj: any[] = [];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private currencyPipe: CurrencyPipe) {
   }
 
   ngOnInit(): void {
     this.tipCalculatorForm.valueChanges.subscribe(selectedValue => {
-      this.tip = this.tipCalculatorForm.get('tip')?.value;
-      this.bill = this.tipCalculatorForm.get('bill')?.value;
-      this.numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
       this.updateTipAmountAndTotal();
     });
   }
 
   calculateTipAmount(): number {
-    if(this.numberPeople === 0)
+    const bill = this.tipCalculatorForm.get('bill')?.value;
+    const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
+    const tip = this.tipCalculatorForm.get('tip')?.value;
+
+    if (numberPeople === 0)
       return 0;
 
-    return (this.bill * this.tip) / (this.numberPeople * 100);
+    return (bill * tip) / (numberPeople * 100);
   }
 
   calculateTotal(): number {
-    if(this.numberPeople === 0)
+    const bill = this.tipCalculatorForm.get('bill')?.value;
+    const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
+
+    if (numberPeople === 0)
       return 0;
 
-    return (this.bill / this.numberPeople) + this.calculateTipAmount();
+    return (bill / numberPeople) + this.calculateTipAmount();
   }
 
   updateTipAmountAndTotal(): void {
@@ -59,4 +68,9 @@ export class AppComponent implements OnInit {
     });
   }
 
+  transformAmount(element: any) {
+    console.log(this.formattedAmount)
+    this.formattedAmount = this.currencyPipe.transform(this.formattedAmount, '$', '$', '1.2-2', 'en-US');
+    element.target.value = this.formattedAmount;
+  }
 }

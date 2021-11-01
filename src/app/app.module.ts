@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { TipButtonComponent } from './tip-button/tip-button.component';
+import {CurrencyPipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { TipButtonComponent } from './tip-button/tip-button.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

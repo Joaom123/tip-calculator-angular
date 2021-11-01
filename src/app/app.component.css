@@ -34,7 +34,10 @@
 .tipCalculatorForm__bill {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin: 0 0 3em;
+  font-size: 0.7em;
+  font-weight: bold;
+  color: grey;
 }
 
 .tipCalculatorForm__bill label {
@@ -44,6 +47,15 @@
 .tipCalculatorForm__tip {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 0 3em;
+}
+
+.tipCalculatorForm__numberPeople {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7em;
+  font-weight: bold;
+  color: grey;
 }
 
 .tipCalculator__tipDisplay {
@@ -51,6 +63,18 @@
   border-radius: 20px;
   padding: 1em;
   flex: 1;
+}
+
+.tipDisplay__tipAmount {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0.5em 2em;
+}
+
+.tipDisplay__total {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0.5em 2em;
 }
 
 .tipCalculator__resetButton {
@@ -67,17 +91,20 @@
   color: white;
   font-size: 0.7em;
   font-weight: bold;
+  margin: 0;
 }
 
 .tipDisplay__person {
   color: var(--dark-grayish-cyan);
   font-size: 0.6em;
   font-weight: bold;
+  margin: 0;
 }
 
 .tipDisplay__value {
   color: var(--strong-cyan);
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-weight: bold;
+  margin: 0;
 }
 

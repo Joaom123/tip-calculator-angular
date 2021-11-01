@@ -6,8 +6,9 @@
     <form class="tipCalculator__form" [formGroup]="tipCalculatorForm">
       <div class="tipCalculatorForm__bill">
         <label for="bill">Bill</label>
-        <input id="bill" name="bill" type="number" formControlName="bill"
-               [value]="tipCalculatorForm.get('bill')?.value">
+        <input id="bill" name="bill" type="text" formControlName="bill"
+               (blur)="transformAmount($event)"
+               [(ngModel)]="formattedAmount">
       </div>
       <div class="tipCalculatorForm__tip">
         <app-tip-button [tipValue]="5" [parentForm]="tipCalculatorForm"></app-tip-button>
@@ -25,14 +26,14 @@
 
     <!--  right  -->
     <div class="tipCalculator__tipDisplay">
-      <div class="tipCalculator__tipAmount">
+      <div class="tipDisplay__tipAmount">
         <div>
           <p class="tipDisplay__name">Tip Amount</p>
           <p class="tipDisplay__person">/ person</p>
         </div>
         <p class="tipDisplay__value">{{tipAmount | currency}}</p>
       </div>
-      <div class="tipCalculator__total">
+      <div class="tipDisplay__total">
         <div>
           <p class="tipDisplay__name">Total</p>
           <p class="tipDisplay__person">/ person</p>
@@ -42,5 +43,4 @@
       <button class="tipCalculator__resetButton" (click)="reset()">RESET</button>
     </div>
   </div>
-
 </div>
