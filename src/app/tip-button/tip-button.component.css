@@ -14,7 +14,12 @@ label {
 }
 
 label:hover {
-  color: var(--very-dark-cyan);;
+  color: var(--very-dark-cyan);
   background-color: var(--light-cyan);
   transition: all 0.5s ease;
+}
+
+.tipButton--checked {
+  color: var(--very-dark-cyan);
+  background-color: var(--strong-cyan);
 }
