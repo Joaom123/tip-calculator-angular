@@ -7,7 +7,7 @@
       <div class="tipCalculatorForm__bill">
         <label for="bill">Bill</label>
         <input id="bill" name="bill" type="text" formControlName="bill"
-               (blur)="transformAmount($event)"
+               (change)="transformAmount($event)"
                [(ngModel)]="formattedAmount">
       </div>
       <div class="tipCalculatorForm__tip">

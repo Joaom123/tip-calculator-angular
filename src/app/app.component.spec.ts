@@ -2,6 +2,8 @@ import {TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {CurrencyPipe} from "@angular/common";
+import {TipButtonComponent} from "./tip-button/tip-button.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -10,8 +12,10 @@ describe('AppComponent', () => {
         RouterTestingModule,
         ReactiveFormsModule
       ],
+      providers: [CurrencyPipe],
       declarations: [
-        AppComponent
+        AppComponent,
+        TipButtonComponent
       ],
     }).compileComponents();
   });
