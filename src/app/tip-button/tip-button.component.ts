@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-tip-button',
@@ -8,10 +8,12 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class TipButtonComponent implements OnInit {
   @Input() tipValue: number = 0;
-  @Input() parentForm: FormGroup = this.formBuilder.group({});
-  selectedTipValue: number = 15;
+  @Input() parentForm: FormGroup = new FormGroup({
+    tip: new FormControl(0)
+  });
+  selectedTipValue: number = 0;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor() {}
 
   ngOnInit(): void {
     this.parentForm.get('tip')?.valueChanges.subscribe(() => {
