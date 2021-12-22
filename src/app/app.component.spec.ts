@@ -4,6 +4,7 @@ import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CurrencyPipe} from "@angular/common";
 import {TipButtonComponent} from "./tip-button/tip-button.component";
+import {By} from "@angular/platform-browser";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -34,13 +35,50 @@ describe('AppComponent', () => {
     expect(title?.textContent).toEqual("S P L IT T E R");
   });
 
+  it('initial value of number of people should be 2', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const tipCalculatorForm = app.tipCalculatorForm;
+    const numberOfPeopleValue = tipCalculatorForm.get('numberPeople')?.value;
+
+    expect(numberOfPeopleValue).toBe(2);
+  });
+
+  it('initial value of tip should be 15', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const tipCalculatorForm = app.tipCalculatorForm;
+    const tipValue = tipCalculatorForm.get('tip')?.value;
+
+    expect(tipValue).toBe('15');
+  })
+
   it('should calculateTipAmount', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+    const tipAmount = app.calculateTipAmount();
 
-    expect(app.calculateTipAmount()).toEqual(0);
+    expect(tipAmount).toEqual(0);
   });
 
-  //test reset button
+  it('change value of bill to 100 and calculate tip amount and total correctly', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const billInput = fixture.debugElement.query(By.css('#bill'));
+      const billInputElement = billInput.nativeElement;
 
+      billInputElement.value = '150';
+      billInputElement.dispatchEvent(new Event('input'));
+
+      const app = fixture.componentInstance;
+      const tipAmount = app.calculateTipAmount();
+      const total = app.calculateTotal();
+      const billValue = app.tipCalculatorForm.get('bill')?.value;
+
+      expect(tipAmount).toBe(11.25);
+      expect(billValue).toBe('150');
+      expect(total).toBe(86.25)
+    });
+  });
 });
