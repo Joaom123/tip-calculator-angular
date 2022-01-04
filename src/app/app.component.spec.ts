@@ -61,7 +61,7 @@ describe('AppComponent', () => {
     expect(tipAmount).toEqual(0);
   });
 
-  it('change value of bill to 100 and calculate tip amount and total correctly', async () => {
+  it('should calculate tip amount and total correctly when value of bill is changed', async () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     fixture.whenStable().then(() => {
@@ -79,6 +79,28 @@ describe('AppComponent', () => {
       expect(tipAmount).toBe(11.25);
       expect(billValue).toBe('150');
       expect(total).toBe(86.25)
+    });
+  });
+
+  it('should change value of tipAmount if value of bill is changed', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const billInput = fixture.debugElement.query(By.css('#bill'));
+      const billInputElement = billInput.nativeElement;
+
+      billInputElement.value = '150';
+      billInputElement.dispatchEvent(new Event('input'));
+
+      const app = fixture.componentInstance;
+      const billValue = app.tipCalculatorForm.get('bill')?.value;
+      const tipAmountValue = app.tipAmount;
+      const tipAmountValueUI = fixture.debugElement.query(By.css('#tipAmount'));
+      fixture.detectChanges()
+
+      expect(tipAmountValue).toBe(11.25);
+      expect(billValue).toBe('150');
+      expect(tipAmountValueUI.nativeElement.textContent).toBe("$11.25")
     });
   });
 });

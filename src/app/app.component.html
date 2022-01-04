@@ -16,7 +16,7 @@
         <app-tip-button [tipValue]="15" [parentForm]="tipCalculatorForm"></app-tip-button>
         <app-tip-button [tipValue]="25" [parentForm]="tipCalculatorForm"></app-tip-button>
         <app-tip-button [tipValue]="50" [parentForm]="tipCalculatorForm"></app-tip-button>
-        <!-- TODO <input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom">-->
+        <input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom">
       </div>
       <div class="tipCalculatorForm__numberPeople">
         <label for="numberPeople">Number of People</label>
@@ -31,7 +31,7 @@
           <p class="tipDisplay__name">Tip Amount</p>
           <p class="tipDisplay__person">/ person</p>
         </div>
-        <p class="tipDisplay__value">{{tipAmount | currency}}</p>
+        <p class="tipDisplay__value" id="tipAmount">{{tipAmount | currency}}</p>
       </div>
       <div class="tipDisplay__total">
         <div>
