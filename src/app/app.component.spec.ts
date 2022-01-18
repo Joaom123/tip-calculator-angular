@@ -1,23 +1,17 @@
-import {TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {AppComponent} from './app.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {CurrencyPipe} from "@angular/common";
-import {TipButtonComponent} from "./tip-button/tip-button.component";
-import {By} from "@angular/platform-browser";
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CurrencyPipe } from '@angular/common';
+import { TipButtonComponent } from './tip-button/tip-button.component';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        ReactiveFormsModule
-      ],
+      imports: [RouterTestingModule, ReactiveFormsModule],
       providers: [CurrencyPipe],
-      declarations: [
-        AppComponent,
-        TipButtonComponent
-      ],
+      declarations: [AppComponent, TipButtonComponent]
     }).compileComponents();
   });
 
@@ -30,9 +24,9 @@ describe('AppComponent', () => {
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const title = fixture.nativeElement.querySelector("#title");
+    const title = fixture.nativeElement.querySelector('#title');
 
-    expect(title?.textContent).toEqual("S P L IT T E R");
+    expect(title?.textContent).toEqual('S P L IT T E R');
   });
 
   it('initial value of number of people should be 2', () => {
@@ -51,7 +45,7 @@ describe('AppComponent', () => {
     const tipValue = tipCalculatorForm.get('tip')?.value;
 
     expect(tipValue).toBe('15');
-  })
+  });
 
   it('should calculateTipAmount', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -78,7 +72,7 @@ describe('AppComponent', () => {
 
       expect(tipAmount).toBe(11.25);
       expect(billValue).toBe('150');
-      expect(total).toBe(86.25)
+      expect(total).toBe(86.25);
     });
   });
 
@@ -96,11 +90,11 @@ describe('AppComponent', () => {
       const billValue = app.tipCalculatorForm.get('bill')?.value;
       const tipAmountValue = app.tipAmount;
       const tipAmountValueUI = fixture.debugElement.query(By.css('#tipAmount'));
-      fixture.detectChanges()
+      fixture.detectChanges();
 
       expect(tipAmountValue).toBe(11.25);
       expect(billValue).toBe('150');
-      expect(tipAmountValueUI.nativeElement.textContent).toBe("$11.25")
+      expect(tipAmountValueUI.nativeElement.textContent).toBe('$11.25');
     });
   });
 });

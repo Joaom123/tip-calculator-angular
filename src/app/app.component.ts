@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {CurrencyPipe} from "@angular/common";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -19,14 +19,11 @@ export class AppComponent implements OnInit {
   tipAmount: number = this.calculateTipAmount();
   total: number = this.calculateTotal();
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private currencyPipe: CurrencyPipe) {
-  }
+  constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe) {}
 
   ngOnInit(): void {
     this.reset();
-    this.tipCalculatorForm.valueChanges.subscribe(selectedValue => {
+    this.tipCalculatorForm.valueChanges.subscribe(() => {
       this.updateTipAmountAndTotal();
     });
   }
@@ -36,8 +33,7 @@ export class AppComponent implements OnInit {
     const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
     const tip = +this.tipCalculatorForm.get('tip')?.value;
 
-    if (!numberPeople || !bill || !tip)
-      return 0;
+    if (!numberPeople || !bill || !tip) return 0;
 
     return (bill * tip) / (numberPeople * 100);
   }
@@ -46,10 +42,9 @@ export class AppComponent implements OnInit {
     const bill = this.tipCalculatorForm.get('bill')?.value;
     const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
 
-    if (numberPeople === 0)
-      return 0;
+    if (numberPeople === 0) return 0;
 
-    return (bill / numberPeople) + this.calculateTipAmount();
+    return bill / numberPeople + this.calculateTipAmount();
   }
 
   updateTipAmountAndTotal(): void {

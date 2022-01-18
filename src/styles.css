@@ -3,7 +3,7 @@
 :root {
   --very-dark-cyan: hsl(183, 100%, 15%);
   --strong-cyan: hsl(172, 67%, 45%);
-  --light-cyan: #9EE8DF;
+  --light-cyan: #9ee8df;
   --dark-grayish-cyan: hsl(186, 14%, 43%);
   --dark-grayish-cyan2: hsl(184, 14%, 56%);
   --light-grayish-cyan: hsl(185, 41%, 84%);
@@ -11,29 +11,29 @@
 }
 
 @font-face {
-  font-family: "space-mono";
-  src: url("./assets/fonts/Space_Mono/SpaceMono-Regular.ttf") format("truetype");
+  font-family: 'space-mono';
+  src: url('./assets/fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "space-mono-bold";
-  src: url("./assets/fonts/Space_Mono/SpaceMono-Bold.ttf") format("truetype");
+  font-family: 'space-mono-bold';
+  src: url('./assets/fonts/Space_Mono/SpaceMono-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "space-mono-bold-italic";
-  src: url("./assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf") format("truetype");
+  font-family: 'space-mono-bold-italic';
+  src: url('./assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "space-mono-bold";
-  src: url("./assets/fonts/Space_Mono/SpaceMono-Italic.ttf") format("truetype");
+  font-family: 'space-mono-bold';
+  src: url('./assets/fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }

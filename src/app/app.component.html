@@ -1,14 +1,19 @@
 <div class="container">
-  <h2 class="title" id="title">S P L I<br/>T T E R</h2>
+  <h2 class="title" id="title">S P L I<br />T T E R</h2>
 
   <div class="tipCalculator">
     <!--  left  -->
     <form class="tipCalculator__form" [formGroup]="tipCalculatorForm">
       <div class="tipCalculatorForm__bill">
         <label for="bill">Bill</label>
-        <input id="bill" name="bill" type="text" formControlName="bill"
-               (change)="transformAmount($event)"
-               [(ngModel)]="formattedAmount">
+        <input
+          id="bill"
+          name="bill"
+          type="text"
+          formControlName="bill"
+          (change)="transformAmount($event)"
+          [(ngModel)]="formattedAmount"
+        />
       </div>
       <div class="tipCalculatorForm__tip">
         <app-tip-button [tipValue]="5" [parentForm]="tipCalculatorForm"></app-tip-button>
@@ -16,11 +21,11 @@
         <app-tip-button [tipValue]="15" [parentForm]="tipCalculatorForm"></app-tip-button>
         <app-tip-button [tipValue]="25" [parentForm]="tipCalculatorForm"></app-tip-button>
         <app-tip-button [tipValue]="50" [parentForm]="tipCalculatorForm"></app-tip-button>
-        <input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom">
+        <input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom" />
       </div>
       <div class="tipCalculatorForm__numberPeople">
         <label for="numberPeople">Number of People</label>
-        <input id="numberPeople" type="number" formControlName="numberPeople" [min]="0">
+        <input id="numberPeople" type="number" formControlName="numberPeople" [min]="0" />
       </div>
     </form>
 
@@ -31,14 +36,14 @@
           <p class="tipDisplay__name">Tip Amount</p>
           <p class="tipDisplay__person">/ person</p>
         </div>
-        <p class="tipDisplay__value" id="tipAmount">{{tipAmount | currency}}</p>
+        <p class="tipDisplay__value" id="tipAmount">{{ tipAmount | currency }}</p>
       </div>
       <div class="tipDisplay__total">
         <div>
           <p class="tipDisplay__name">Total</p>
           <p class="tipDisplay__person">/ person</p>
         </div>
-        <p class="tipDisplay__value">{{total | currency}}</p>
+        <p class="tipDisplay__value">{{ total | currency }}</p>
       </div>
       <button class="tipCalculator__resetButton" (click)="reset()">RESET</button>
     </div>

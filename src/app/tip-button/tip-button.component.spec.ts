@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TipButtonComponent } from './tip-button.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {DebugElement} from "@angular/core";
-import {By} from "@angular/platform-browser";
+import { ReactiveFormsModule } from '@angular/forms';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('TipButtonComponent', () => {
   let component: TipButtonComponent;
@@ -12,14 +12,9 @@ describe('TipButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        ReactiveFormsModule
-      ],
-      declarations: [
-        TipButtonComponent
-      ],
-    })
-    .compileComponents();
+      imports: [ReactiveFormsModule],
+      declarations: [TipButtonComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {
