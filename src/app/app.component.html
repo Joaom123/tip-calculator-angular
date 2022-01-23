@@ -13,8 +13,7 @@
           formControlName="bill"
           class="tipCalculatorForm__numberInput"
           placeholder="0"
-          (change)="transformAmount($event)"
-          [(ngModel)]="formattedAmount"
+          (blur)="transformAmount($event)"
         />
       </div>
       <div class="tipCalculatorForm__tip">
