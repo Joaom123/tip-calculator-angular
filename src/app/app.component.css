@@ -70,7 +70,7 @@
   text-align: right;
   color: var(--very-dark-cyan);
   width: 125px;
-  height: 43px;
+  height: 40px;
   padding: 0;
   margin: 0;
 }
@@ -89,20 +89,19 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: space-between;
   padding: 1em;
 }
 
 .tipDisplay__tipAmount {
   display: flex;
   justify-content: space-between;
-  margin: 1em 0.5em 2em;
+  margin: 1em 0.5em 1em;
 }
 
 .tipDisplay__total {
   display: flex;
   justify-content: space-between;
-  margin: 1em 0.5em 2em;
+  margin: 0.5em 0.5em 1em;
 }
 
 .tipCalculator__resetButton {
@@ -114,6 +113,7 @@
   font-size: 24px;
   padding: 10px 0 10px;
   width: 100%;
+  margin-top: auto;
 }
 
 .tipDisplay__name {
