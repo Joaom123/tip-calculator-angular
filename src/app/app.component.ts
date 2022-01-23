@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -9,9 +9,9 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   tipCalculatorForm: FormGroup = this.formBuilder.group({
-    bill: [''],
-    tip: [''],
-    numberPeople: ['']
+    bill: ['', Validators.min(0.01)],
+    tip: ['', Validators.min(0)],
+    numberPeople: ['', Validators.min(1)]
   });
 
   tipAmount: number = this.calculateTipAmount();
@@ -37,6 +37,8 @@ export class AppComponent implements OnInit {
 
     if (!numberPeople || !bill || !tip) return 0;
 
+    if (numberPeople < 0 || bill < 0 || tip < 0) return 0;
+
     return (bill * tip) / (numberPeople * 100);
   }
 
@@ -45,6 +47,8 @@ export class AppComponent implements OnInit {
     const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
 
     if (!numberPeople || !bill) return 0;
+
+    if (numberPeople < 0 || bill < 0) return 0;
 
     return bill / numberPeople + this.calculateTipAmount();
   }

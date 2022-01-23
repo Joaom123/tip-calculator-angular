@@ -5,7 +5,15 @@
     <!--  left  -->
     <form class="tipCalculator__form" [formGroup]="tipCalculatorForm">
       <div class="tipCalculatorForm__bill">
-        <label for="bill">Bill</label>
+        <label for="bill"
+          >Bill
+          <span
+            *ngIf="tipCalculatorForm.get('bill')?.touched && tipCalculatorForm.get('bill')?.errors?.['min']"
+            class="tipCalculatorForm__numberPeopleErrorMessage"
+            style="float: right"
+            >Can't be zero or negative!</span
+          ></label
+        >
         <input
           id="bill"
           name="bill"
@@ -17,7 +25,15 @@
         />
       </div>
       <div class="tipCalculatorForm__tip">
-        <label class="tipCalculatorFormTip__title">Select Tip %</label>
+        <label class="tipCalculatorFormTip__title"
+          >Select Tip %
+          <span
+            *ngIf="tipCalculatorForm.get('tip')?.touched && tipCalculatorForm.get('tip')?.errors?.['min']"
+            class="tipCalculatorForm__numberPeopleErrorMessage"
+            style="float: right"
+            >Can't be negative!</span
+          ></label
+        >
         <div class="tipCalculatorForm__tips">
           <app-tip-button [tipValue]="5" [parentForm]="tipCalculatorForm"></app-tip-button>
           <app-tip-button [tipValue]="10" [parentForm]="tipCalculatorForm"></app-tip-button>
@@ -37,13 +53,22 @@
         </div>
       </div>
       <div class="tipCalculatorForm__numberPeople">
-        <label for="numberPeople">Number of People</label>
+        <label for="numberPeople"
+          >Number of People
+          <span
+            *ngIf="tipCalculatorForm.get('numberPeople')?.touched && tipCalculatorForm.get('numberPeople')?.errors?.['min']"
+            class="tipCalculatorForm__numberPeopleErrorMessage"
+            style="float: right"
+            >Can't be zero!</span
+          >
+        </label>
         <input
           class="tipCalculatorForm__numberInput tipCalculatorForm__personIcon"
           id="numberPeople"
           type="number"
           formControlName="numberPeople"
           placeholder="0"
+          min="0"
         />
       </div>
     </form>

@@ -84,6 +84,10 @@
   color: grey;
 }
 
+.tipCalculatorForm__numberPeopleErrorMessage {
+  color: red;
+}
+
 .tipCalculator__tipDisplay {
   background-color: var(--very-dark-cyan);
   border-radius: 20px;
