@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TipButtonComponent } from './tip-button.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
@@ -20,6 +20,10 @@ describe('TipButtonComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TipButtonComponent);
     component = fixture.componentInstance;
+    component.tipValue = 15;
+    component.parentForm = new FormGroup({
+      tip: new FormControl(15)
+    });
     tipButtonDebugElement = fixture.debugElement;
     fixture.detectChanges();
   });
@@ -28,13 +32,13 @@ describe('TipButtonComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('input value should be equals tipValue', () => {
+  it('input id should be equals tipValue', () => {
     let inputElement: DebugElement = tipButtonDebugElement.query(By.css('input'));
-    expect(inputElement.nativeElement.id).toBe('tip0');
+    expect(inputElement.nativeElement.id).toBe('tip15');
   });
 
   it('label content should be equals tipValue%', () => {
     let labelElement: DebugElement = tipButtonDebugElement.query(By.css('label'));
-    expect(labelElement.nativeElement.textContent).toBe('0%');
+    expect(labelElement.nativeElement.textContent).toBe('15%');
   });
 });

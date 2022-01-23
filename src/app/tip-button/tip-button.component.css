@@ -5,21 +5,22 @@ input {
 }
 
 label {
+  background-color: var(--very-dark-cyan);
+  border-radius: 0.2em;
   cursor: pointer;
   color: white;
-  background-color: var(--very-dark-cyan);
-  padding: 0.4em 1.2em;
-  border-radius: 0.2em;
   font-family: space-mono-bold, monospace;
+  padding: 0.15em 1.7em;
+  width: 110px;
 }
 
 label:hover {
-  color: var(--very-dark-cyan);
   background-color: var(--light-cyan);
+  color: var(--very-dark-cyan);
   transition: all 0.5s ease;
 }
 
 .tipButton--checked {
-  color: var(--very-dark-cyan);
   background-color: var(--strong-cyan);
+  color: var(--very-dark-cyan);
 }
