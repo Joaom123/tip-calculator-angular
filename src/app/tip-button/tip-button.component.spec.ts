@@ -28,6 +28,7 @@ describe('TipButtonComponent', () => {
 
   it('label content should be equals tipValue%', () => {
     let labelElement = fixture.debugElement.query(By.css('label'));
+
     expect(labelElement.nativeElement.textContent).toBe('15%');
   });
 
@@ -44,21 +45,17 @@ describe('TipButtonComponent', () => {
     component.tipValue = 20;
     component.parentForm.controls['tip'].setValue(20);
     fixture.detectChanges();
+    let divElement = fixture.debugElement.query(By.css('.tipButton--checked'));
 
-    fixture.whenStable().then(() => {
-      let divElement = fixture.debugElement.query(By.css('.tipButton--checked'));
-      expect(divElement).toBeTruthy();
-    });
+    expect(divElement).toBeTruthy();
   });
 
   it('should not have tipButton--checked if tip on form is different to tipValue of the component', function () {
     component.tipValue = 15;
     component.parentForm.controls['tip'].setValue(20);
     fixture.detectChanges();
+    let divElement = fixture.debugElement.query(By.css('.tipButton--checked'));
 
-    fixture.whenStable().then(() => {
-      let divElement = fixture.debugElement.query(By.css('.tipButton--checked'));
-      expect(divElement).toBeFalsy();
-    });
+    expect(divElement).toBeFalsy();
   });
 });
