@@ -14,8 +14,6 @@ export class AppComponent implements OnInit {
     numberPeople: ['']
   });
 
-  formattedAmount: any = '';
-  amount: any = '';
   tipAmount: number = this.calculateTipAmount();
   total: number = this.calculateTotal();
 
@@ -27,28 +25,36 @@ export class AppComponent implements OnInit {
     });
   }
 
+  updateTipAmountAndTotal(): void {
+    this.tipAmount = this.calculateTipAmount();
+    this.total = this.calculateTotal();
+  }
+
   calculateTipAmount(): number {
-    const bill = +this.tipCalculatorForm.get('bill')?.value;
+    const bill = this.getBillValue();
     const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
     const tip = +this.tipCalculatorForm.get('tip')?.value;
 
-    if (!numberPeople || !bill) return 0;
+    if (!numberPeople || !bill || !tip) return 0;
 
     return (bill * tip) / (numberPeople * 100);
   }
 
   calculateTotal(): number {
-    const bill = this.tipCalculatorForm.get('bill')?.value;
+    const bill = this.getBillValue();
     const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
 
-    if (!numberPeople) return 0;
+    if (!numberPeople || !bill) return 0;
 
     return bill / numberPeople + this.calculateTipAmount();
   }
 
-  updateTipAmountAndTotal(): void {
-    this.tipAmount = this.calculateTipAmount();
-    this.total = this.calculateTotal();
+  getBillValue() {
+    let billValue: string = this.tipCalculatorForm.get('bill')?.value;
+
+    if (!billValue) return 0;
+
+    return +billValue.replace(/,/g, '');
   }
 
   reset(): void {
@@ -56,7 +62,9 @@ export class AppComponent implements OnInit {
   }
 
   transformAmount(element: any) {
-    this.formattedAmount = this.currencyPipe.transform(this.formattedAmount, '$', '', '1.2-2', 'en-US');
-    element.target.value = +this.formattedAmount;
+    let value: string = element.target.value;
+    const formattedAmount = this.currencyPipe.transform(value, '$', '', '1.2-2', 'en-US');
+
+    this.tipCalculatorForm.get('bill')?.patchValue(formattedAmount);
   }
 }
