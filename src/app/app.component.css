@@ -66,7 +66,7 @@
   background-color: var(--light-grayish-cyan2);
   border: 0;
   font-family: 'space-mono-bold', monospace;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: bold;
   text-align: right;
   color: var(--very-dark-cyan);
@@ -138,13 +138,22 @@
   margin: 0;
 }
 
+.tipCalculatorForm__dollarIcon {
+  background: url('src/assets/images/icon-dollar.svg') no-repeat scroll 15px 15px;
+}
+
+.tipCalculatorForm__personIcon {
+  background: url('src/assets/images/icon-person.svg') no-repeat scroll 15px 15px;
+}
+
 .tipCalculatorForm__numberInput {
   background-color: var(--light-grayish-cyan2);
   border: 0;
   color: var(--very-dark-cyan);
   font-family: 'space-mono-bold', monospace;
-  font-size: 1.5em;
+  font-size: 1.6em;
   font-weight: bold;
+  padding-left: 10px;
   text-align: right;
 }
 
