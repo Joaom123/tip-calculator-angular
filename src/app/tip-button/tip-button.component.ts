@@ -14,7 +14,7 @@ export class TipButtonComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.parentForm?.get('tip')?.valueChanges.subscribe(() => {
+    this.parentForm.get('tip')?.valueChanges.subscribe(() => {
       this.selectedTipValue = this.parentForm.getRawValue().tip;
     });
   }

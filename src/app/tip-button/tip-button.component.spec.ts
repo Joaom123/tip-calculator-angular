@@ -1,14 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TipButtonComponent } from './tip-button.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 describe('TipButtonComponent', () => {
   let component: TipButtonComponent;
   let fixture: ComponentFixture<TipButtonComponent>;
-  let tipButtonDebugElement: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -24,7 +21,6 @@ describe('TipButtonComponent', () => {
     component.parentForm = new FormGroup({
       tip: new FormControl(15)
     });
-    tipButtonDebugElement = fixture.debugElement;
     fixture.detectChanges();
   });
 
@@ -32,13 +28,39 @@ describe('TipButtonComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('input id should be equals tipValue', () => {
-    let inputElement: DebugElement = tipButtonDebugElement.query(By.css('input'));
-    expect(inputElement.nativeElement.id).toBe('tip15');
+  it('label content should be equals tipValue%', () => {
+    let labelElement = fixture.debugElement.query(By.css('label'));
+    expect(labelElement.nativeElement.textContent).toBe('15%');
   });
 
-  it('label content should be equals tipValue%', () => {
-    let labelElement: DebugElement = tipButtonDebugElement.query(By.css('label'));
-    expect(labelElement.nativeElement.textContent).toBe('15%');
+  it('should change label content if tip value change', function () {
+    component.tipValue = 20;
+    fixture.detectChanges();
+
+    let labelElement = fixture.debugElement.query(By.css('label'));
+
+    expect(labelElement.nativeElement.textContent).toBe('20%');
+  });
+
+  it('should have tipButton--checked if tip on form is equal to tipValue of the component', function () {
+    component.tipValue = 20;
+    component.parentForm.controls['tip'].setValue(20);
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      let divElement = fixture.debugElement.query(By.css('.tipButton--checked'));
+      expect(divElement).toBeTruthy();
+    });
+  });
+
+  it('should not have tipButton--checked if tip on form is different to tipValue of the component', function () {
+    component.tipValue = 15;
+    component.parentForm.controls['tip'].setValue(20);
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      let divElement = fixture.debugElement.query(By.css('.tipButton--checked'));
+      expect(divElement).toBeFalsy();
+    });
   });
 });

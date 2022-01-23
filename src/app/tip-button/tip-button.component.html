@@ -3,6 +3,6 @@
   [className]="selectedTipValue === tipValue ? 'tipButton--checked' : ''"
   (click)="tipInput.click()"
 >
-  <input #tipInput type="radio" id="{{ 'tip' + tipValue }}" name="tip" [value]="tipValue" formControlName="tip" />
+  <input #tipInput type="radio" name="tip" [value]="tipValue" formControlName="tip" />
   <label for="{{ 'tip' + tipValue }}">{{ tipValue }}%</label>
 </div>
