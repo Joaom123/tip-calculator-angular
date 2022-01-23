@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const title = fixture.nativeElement.querySelector('#title');
+  it('should render title svg', () => {
+    const logoSrc = fixture.debugElement.nativeElement.querySelector('.logo').src;
 
-    expect(title?.textContent).toEqual('S P L IT T E R');
+    expect(logoSrc).toContain('/images/logo.svg');
   });
 
   it('initial value of number of people should be ""', () => {
