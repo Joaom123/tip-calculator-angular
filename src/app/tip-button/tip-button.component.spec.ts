@@ -12,9 +12,7 @@ describe('TipButtonComponent', () => {
       imports: [ReactiveFormsModule],
       declarations: [TipButtonComponent]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(TipButtonComponent);
     component = fixture.componentInstance;
     component.tipValue = 15;
