@@ -10,8 +10,8 @@ import { CurrencyPipe } from '@angular/common';
 export class AppComponent implements OnInit {
   tipCalculatorForm: FormGroup = this.formBuilder.group({
     bill: [''],
-    tip: ['15'],
-    numberPeople: [2]
+    tip: [''],
+    numberPeople: ['']
   });
 
   formattedAmount: any = '';
@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe) {}
 
   ngOnInit(): void {
-    this.reset();
     this.tipCalculatorForm.valueChanges.subscribe(() => {
       this.updateTipAmountAndTotal();
     });
@@ -33,7 +32,7 @@ export class AppComponent implements OnInit {
     const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
     const tip = +this.tipCalculatorForm.get('tip')?.value;
 
-    if (!numberPeople || !bill || !tip) return 0;
+    if (!numberPeople || !bill) return 0;
 
     return (bill * tip) / (numberPeople * 100);
   }
@@ -42,7 +41,7 @@ export class AppComponent implements OnInit {
     const bill = this.tipCalculatorForm.get('bill')?.value;
     const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
 
-    if (numberPeople === 0) return 0;
+    if (!numberPeople) return 0;
 
     return bill / numberPeople + this.calculateTipAmount();
   }
@@ -53,11 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   reset(): void {
-    this.tipCalculatorForm.setValue({
-      bill: 0,
-      tip: 15,
-      numberPeople: 2
-    });
+    this.tipCalculatorForm.reset();
   }
 
   transformAmount(element: any) {

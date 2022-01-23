@@ -29,22 +29,22 @@ describe('AppComponent', () => {
     expect(title?.textContent).toEqual('S P L IT T E R');
   });
 
-  it('initial value of number of people should be 2', () => {
+  it('initial value of number of people should be ""', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     const tipCalculatorForm = app.tipCalculatorForm;
     const numberOfPeopleValue = tipCalculatorForm.get('numberPeople')?.value;
 
-    expect(numberOfPeopleValue).toBe(2);
+    expect(numberOfPeopleValue).toBe('');
   });
 
-  it('initial value of tip should be 15', () => {
+  it('initial value of tip should be ""', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     const tipCalculatorForm = app.tipCalculatorForm;
     const tipValue = tipCalculatorForm.get('tip')?.value;
 
-    expect(tipValue).toBe('15');
+    expect(tipValue).toBe('');
   });
 
   it('should calculateTipAmount', () => {

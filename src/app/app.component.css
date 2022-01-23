@@ -28,7 +28,7 @@
 
 .tipCalculator__form {
   flex: 1;
-  padding: 15px 10px 15px;
+  padding: 15px 1em 15px;
 }
 
 .tipCalculatorForm__bill {
@@ -45,9 +45,34 @@
 }
 
 .tipCalculatorForm__tip {
+  margin: 0 0 3em;
+}
+
+.tipCalculatorForm__tips {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 0 3em;
+  row-gap: 0.6em;
+  column-gap: 0.4em;
+}
+
+.tipCalculatorFormTip__title {
+  font-size: 0.7em;
+  font-weight: bold;
+  color: grey;
+}
+
+.tipCalculatorForm__customTip {
+  background-color: var(--light-grayish-cyan2);
+  border: 0;
+  font-family: 'space-mono-bold', monospace;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: right;
+  color: var(--very-dark-cyan);
+  width: 125px;
+  height: 43px;
+  padding: 0;
+  margin: 0;
 }
 
 .tipCalculatorForm__numberPeople {
@@ -61,8 +86,11 @@
 .tipCalculator__tipDisplay {
   background-color: var(--very-dark-cyan);
   border-radius: 20px;
-  padding: 1em;
+  display: flex;
   flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
 }
 
 .tipDisplay__tipAmount {
@@ -78,13 +106,14 @@
 }
 
 .tipCalculator__resetButton {
-  width: 100%;
   border-radius: 10px;
-  color: var(--very-dark-cyan);
   background-color: var(--strong-cyan);
+  color: var(--very-dark-cyan);
+  cursor: pointer;
   font-family: 'space-mono-bold', monospace;
   font-size: 24px;
   padding: 10px 0 10px;
+  width: 100%;
 }
 
 .tipDisplay__name {
@@ -106,4 +135,26 @@
   font-size: 1.5em;
   font-weight: bold;
   margin: 0;
+}
+
+.tipCalculatorForm__numberInput {
+  background-color: var(--light-grayish-cyan2);
+  border: 0;
+  color: var(--very-dark-cyan);
+  font-family: 'space-mono-bold', monospace;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }

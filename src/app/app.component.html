@@ -11,21 +11,42 @@
           name="bill"
           type="text"
           formControlName="bill"
+          class="tipCalculatorForm__numberInput"
+          placeholder="0"
           (change)="transformAmount($event)"
           [(ngModel)]="formattedAmount"
         />
       </div>
       <div class="tipCalculatorForm__tip">
-        <app-tip-button [tipValue]="5" [parentForm]="tipCalculatorForm"></app-tip-button>
-        <app-tip-button [tipValue]="10" [parentForm]="tipCalculatorForm"></app-tip-button>
-        <app-tip-button [tipValue]="15" [parentForm]="tipCalculatorForm"></app-tip-button>
-        <app-tip-button [tipValue]="25" [parentForm]="tipCalculatorForm"></app-tip-button>
-        <app-tip-button [tipValue]="50" [parentForm]="tipCalculatorForm"></app-tip-button>
-        <input id="tipCustom" type="number" formControlName="tip" min="0" max="100" name="tip" placeholder="Custom" />
+        <label class="tipCalculatorFormTip__title">Select Tip %</label>
+        <div class="tipCalculatorForm__tips">
+          <app-tip-button [tipValue]="5" [parentForm]="tipCalculatorForm"></app-tip-button>
+          <app-tip-button [tipValue]="10" [parentForm]="tipCalculatorForm"></app-tip-button>
+          <app-tip-button [tipValue]="15" [parentForm]="tipCalculatorForm"></app-tip-button>
+          <app-tip-button [tipValue]="25" [parentForm]="tipCalculatorForm"></app-tip-button>
+          <app-tip-button [tipValue]="50" [parentForm]="tipCalculatorForm"></app-tip-button>
+          <input
+            id="tipCustom"
+            class="tipCalculatorForm__customTip"
+            type="number"
+            formControlName="tip"
+            min="0"
+            max="100"
+            name="tip"
+            placeholder="Custom"
+          />
+        </div>
       </div>
       <div class="tipCalculatorForm__numberPeople">
         <label for="numberPeople">Number of People</label>
-        <input id="numberPeople" type="number" formControlName="numberPeople" [min]="0" />
+        <input
+          class="tipCalculatorForm__numberInput"
+          id="numberPeople"
+          type="number"
+          formControlName="numberPeople"
+          [min]="0"
+          placeholder="0"
+        />
       </div>
     </form>
 
