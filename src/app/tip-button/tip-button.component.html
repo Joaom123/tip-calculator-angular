@@ -1,6 +1,8 @@
-<ng-container [formGroup]="parentForm">
-  <input type="radio" id="{{ 'tip' + tipValue }}" name="tip" [value]="tipValue" formControlName="tip" />
-  <label for="{{ 'tip' + tipValue }}" [className]="selectedTipValue === tipValue ? 'tipButton--checked' : ''"
-    >{{ tipValue }}%</label
-  >
-</ng-container>
+<div
+  [formGroup]="parentForm"
+  [className]="selectedTipValue === tipValue ? 'tipButton--checked' : ''"
+  (click)="tipInput.click()"
+>
+  <input #tipInput type="radio" id="{{ 'tip' + tipValue }}" name="tip" [value]="tipValue" formControlName="tip" />
+  <label for="{{ 'tip' + tipValue }}">{{ tipValue }}%</label>
+</div>

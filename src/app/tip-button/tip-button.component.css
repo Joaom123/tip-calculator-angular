@@ -1,23 +1,30 @@
-input {
-  visibility: hidden;
-  height: 0;
-  width: 0;
-}
-
-label {
+div {
+  align-items: center;
   background-color: var(--very-dark-cyan);
   border-radius: 0.2em;
-  cursor: pointer;
   color: white;
-  font-family: space-mono-bold, monospace;
-  padding: 0.15em 1.7em;
-  width: 110px;
+  cursor: pointer;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  width: 120px;
 }
 
-label:hover {
+div:hover {
   background-color: var(--light-cyan);
   color: var(--very-dark-cyan);
   transition: all 0.5s ease;
+}
+
+input {
+  display: none;
+}
+
+label {
+  background-color: inherit;
+  color: inherit;
+  cursor: pointer;
+  font-family: space-mono-bold, monospace;
 }
 
 .tipButton--checked {
