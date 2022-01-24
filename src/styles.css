@@ -44,6 +44,12 @@ body {
   font-family: 'space-mono', 'monospace';
 }
 
+@media (max-width: 340px) {
+  body {
+    font-size: 22px;
+  }
+}
+
 .attribution {
   font-size: 11px;
   text-align: center;
