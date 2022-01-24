@@ -175,7 +175,7 @@ describe('AppComponent', () => {
 
     expect(errorMessage).toBeFalsy();
     expect(tipAmount).toBe(0);
-    expect(total).toBe(0);
+    expect(total).toBe(60);
   });
 
   it('should show error message if bill is zero', function () {
