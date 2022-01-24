@@ -31,9 +31,7 @@ export class AppComponent implements OnInit {
   }
 
   calculateTipAmount(): number {
-    const bill = this.getBillValue();
-    const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
-    const tip = +this.tipCalculatorForm.get('tip')?.value;
+    const { bill, numberPeople, tip } = this.getFormValues();
 
     if (!numberPeople || !bill || !tip) return 0;
 
@@ -43,14 +41,20 @@ export class AppComponent implements OnInit {
   }
 
   calculateTotal(): number {
-    const bill = this.getBillValue();
-    const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
+    const { bill, numberPeople, tip } = this.getFormValues();
 
     if (!numberPeople || !bill) return 0;
 
-    if (numberPeople < 0 || bill < 0) return 0;
+    if (numberPeople < 0 || bill < 0 || tip < 0) return 0;
 
     return bill / numberPeople + this.calculateTipAmount();
+  }
+
+  private getFormValues() {
+    const bill = this.getBillValue();
+    const numberPeople = this.tipCalculatorForm.get('numberPeople')?.value;
+    const tip = +this.tipCalculatorForm.get('tip')?.value;
+    return { bill, numberPeople, tip };
   }
 
   getBillValue() {
