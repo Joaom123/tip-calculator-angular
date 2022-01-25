@@ -4,8 +4,9 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { By } from '@angular/platform-browser';
-import { TipButtonComponent } from './tip-button/tip-button.component';
 import { DebugElement } from '@angular/core';
+import { MockComponent } from 'ng-mocks';
+import { TipButtonComponent } from './tip-button/tip-button.component';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -15,7 +16,7 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, ReactiveFormsModule],
       providers: [CurrencyPipe],
-      declarations: [AppComponent, TipButtonComponent]
+      declarations: [AppComponent, MockComponent(TipButtonComponent)]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
@@ -79,11 +80,9 @@ describe('AppComponent', () => {
     const billValue = component.tipCalculatorForm.get('bill')?.value;
 
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(tipAmount).toBe(11.25);
-      expect(billValue).toBe('150.00');
-      expect(total).toBe(86.25);
-    });
+    expect(tipAmount).toBe(11.25);
+    expect(billValue).toBe('150.00');
+    expect(total).toBe(86.25);
   });
 
   it('should change value of tipAmount if value of bill is changed', async () => {
@@ -225,11 +224,10 @@ describe('AppComponent', () => {
     expect(total).toBe(0);
   });
 
-  it('should render five tip-buttons', function () {});
+  it('should render five tip-buttons', function () {
+    let debugElements = fixture.debugElement.queryAll(By.css('app-tip-button'));
+    let tipValues = debugElements.map((e) => e.componentInstance.tipValue);
 
-  it('should change tip value after click on one tip-button', function () {});
-
-  it('should change tip value correctly after click on one tip-button after another', function () {});
-
-  it('should change tip value correctly when using custom tip after click on tip-button', function () {});
+    expect(tipValues).toEqual([5, 10, 15, 25, 50]);
+  });
 });
