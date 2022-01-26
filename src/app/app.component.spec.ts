@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { MockComponent } from 'ng-mocks';
+import { MockComponent, MockRender } from 'ng-mocks';
 import { TipButtonComponent } from './tip-button/tip-button.component';
 
 describe('AppComponent', () => {
@@ -19,7 +19,7 @@ describe('AppComponent', () => {
       declarations: [AppComponent, MockComponent(TipButtonComponent)]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AppComponent);
+    fixture = MockRender(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -39,6 +39,17 @@ describe('AppComponent', () => {
   const dispatchEventWithValue = (debugElement: DebugElement, value: string, eventType = 'input') => {
     debugElement.nativeElement.value = value;
     debugElement.nativeElement.dispatchEvent(new Event(eventType));
+    fixture.detectChanges();
+  };
+
+  const typingOnCustomButton = (tipCustomButtonDE: DebugElement, value: number) => {
+    tipCustomButtonDE.nativeElement.value = value;
+    tipCustomButtonDE.nativeElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+  };
+
+  const selectTipButton = (tipButtonDE: DebugElement, value: number) => {
+    tipButtonDE.triggerEventHandler('selectValue', value);
     fixture.detectChanges();
   };
 
@@ -229,5 +240,36 @@ describe('AppComponent', () => {
     let tipValues = debugElements.map((e) => e.componentInstance.tipValue);
 
     expect(tipValues).toEqual([5, 10, 15, 25, 50]);
+  });
+
+  it('should change value of tip on form after click on tip-button', function () {
+    const debugElements = fixture.debugElement.queryAll(By.css('app-tip-button'));
+    selectTipButton(debugElements[0], 5);
+    expect(component.tipCalculatorForm.get('tip')?.value).toBe(5);
+  });
+
+  it('should change value of tip after click on two different tip-buttons', function () {
+    const debugElements = fixture.debugElement.queryAll(By.css('app-tip-button'));
+    selectTipButton(debugElements[0], 5);
+    expect(component.tipCalculatorForm.get('tip')?.value).toBe(5);
+
+    selectTipButton(debugElements[1], 10);
+    expect(component.tipCalculatorForm.get('tip')?.value).toBe(10);
+  });
+
+  it('should change value of tip after use custom tip', function () {
+    const tipCustomButtonDE = fixture.debugElement.query(By.css('#tipCustom'));
+    typingOnCustomButton(tipCustomButtonDE, 30);
+    expect(component.tipCalculatorForm.get('tip')?.value).toBe(30);
+  });
+
+  it('should change value of tip correctly when select button after use custom tip', function () {
+    const debugElements = fixture.debugElement.queryAll(By.css('app-tip-button'));
+    selectTipButton(debugElements[0], 5);
+    expect(component.tipCalculatorForm.get('tip')?.value).toBe(5);
+
+    const tipCustomButtonDE = fixture.debugElement.query(By.css('#tipCustom'));
+    typingOnCustomButton(tipCustomButtonDE, 30);
+    expect(component.tipCalculatorForm.get('tip')?.value).toBe(30);
   });
 });
