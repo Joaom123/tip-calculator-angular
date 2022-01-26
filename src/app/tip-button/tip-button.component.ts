@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,16 +6,22 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './tip-button.component.html',
   styleUrls: ['./tip-button.component.css']
 })
-export class TipButtonComponent implements OnInit {
+export class TipButtonComponent {
   @Input() tipValue!: number;
-  @Input() parentForm!: FormGroup;
+  @Input() selectedValue!: number | null;
+
+  @Output() selectValue = new EventEmitter<number>();
+
   selectedTipValue: number = 0;
+  form = new FormGroup({});
 
-  constructor() {}
+  selectTip() {
+    this.selectValue.emit(this.tipValue);
+  }
 
-  ngOnInit(): void {
-    this.parentForm.get('tip')?.valueChanges.subscribe(() => {
-      this.selectedTipValue = this.parentForm.getRawValue().tip;
-    });
+  isSelected(): boolean {
+    if (!this.selectedValue) return false;
+
+    return this.selectedValue === this.tipValue;
   }
 }

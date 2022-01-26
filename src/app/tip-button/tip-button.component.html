@@ -1,8 +1,4 @@
-<div
-  [formGroup]="parentForm"
-  [className]="selectedTipValue === tipValue ? 'tipButton--checked' : ''"
-  (click)="tipInput.click()"
->
-  <input #tipInput type="radio" name="tip" [value]="tipValue" formControlName="tip" />
+<div [formGroup]="form" [className]="isSelected() ? 'tipButton--checked' : ''" (click)="selectTip()">
+  <input type="radio" name="tip" [value]="tipValue" />
   <label>{{ tipValue }}%</label>
 </div>

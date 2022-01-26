@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TipButtonComponent } from './tip-button.component';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 describe('TipButtonComponent', () => {
@@ -16,9 +16,7 @@ describe('TipButtonComponent', () => {
     fixture = TestBed.createComponent(TipButtonComponent);
     component = fixture.componentInstance;
     component.tipValue = 15;
-    component.parentForm = new FormGroup({
-      tip: new FormControl(15)
-    });
+
     fixture.detectChanges();
   });
 
@@ -41,18 +39,18 @@ describe('TipButtonComponent', () => {
     expect(labelElement.nativeElement.textContent).toBe('20%');
   });
 
-  it('should have tipButton--checked if tip on form is equal to tipValue of the component', function () {
+  it('should have tipButton--checked if selectedValue is equal to tipValue', function () {
     component.tipValue = 20;
-    component.parentForm.controls['tip'].setValue(20);
+    component.selectedValue = 20;
     fixture.detectChanges();
     let divElement = fixture.debugElement.query(By.css('.tipButton--checked'));
 
     expect(divElement).toBeTruthy();
   });
 
-  it('should not have tipButton--checked if tip on form is different to tipValue of the component', function () {
+  it('should not have tipButton--checked if tip on form is different to tipValue', function () {
     component.tipValue = 15;
-    component.parentForm.controls['tip'].setValue(20);
+    component.selectedValue = 5;
     fixture.detectChanges();
     let divElement = fixture.debugElement.query(By.css('.tipButton--checked'));
 
