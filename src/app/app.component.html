@@ -38,18 +38,36 @@
           ></label
         >
         <div class="tipCalculatorForm__tips">
-          <app-tip-button [tipValue]="5" [parentForm]="tipCalculatorForm"></app-tip-button>
-          <app-tip-button [tipValue]="10" [parentForm]="tipCalculatorForm"></app-tip-button>
-          <app-tip-button [tipValue]="15" [parentForm]="tipCalculatorForm"></app-tip-button>
-          <app-tip-button [tipValue]="25" [parentForm]="tipCalculatorForm"></app-tip-button>
-          <app-tip-button [tipValue]="50" [parentForm]="tipCalculatorForm"></app-tip-button>
+          <app-tip-button
+            [tipValue]="5"
+            [selectedValue]="tipCalculatorForm.get('tip')?.value"
+            (selectValue)="handleClickTipButton($event)"
+          ></app-tip-button>
+          <app-tip-button
+            [tipValue]="10"
+            [selectedValue]="tipCalculatorForm.get('tip')?.value"
+            (selectValue)="handleClickTipButton($event)"
+          ></app-tip-button>
+          <app-tip-button
+            [tipValue]="15"
+            [selectedValue]="tipCalculatorForm.get('tip')?.value"
+            (selectValue)="handleClickTipButton($event)"
+          ></app-tip-button>
+          <app-tip-button
+            [tipValue]="25"
+            [selectedValue]="tipCalculatorForm.get('tip')?.value"
+            (selectValue)="handleClickTipButton($event)"
+          ></app-tip-button>
+          <app-tip-button
+            [tipValue]="50"
+            [selectedValue]="tipCalculatorForm.get('tip')?.value"
+            (selectValue)="handleClickTipButton($event)"
+          ></app-tip-button>
           <input
             id="tipCustom"
             class="tipCalculatorForm__customTip"
             type="number"
             formControlName="tip"
-            min="0"
-            max="100"
             name="tip"
             placeholder="Custom"
           />

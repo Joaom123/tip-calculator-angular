@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -8,7 +8,7 @@ import { CurrencyPipe } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  tipCalculatorForm: FormGroup = this.formBuilder.group({
+  tipCalculatorForm = this.formBuilder.group({
     bill: ['', Validators.min(0.01)],
     tip: ['', Validators.min(0)],
     numberPeople: ['', Validators.min(1)]
@@ -75,5 +75,9 @@ export class AppComponent implements OnInit {
     const formattedAmount = this.currencyPipe.transform(value, '$', '', '1.2-2', 'en-US');
 
     this.tipCalculatorForm.get('bill')?.patchValue(formattedAmount);
+  }
+
+  handleClickTipButton($event: any) {
+    this.tipCalculatorForm.get('tip')?.patchValue($event);
   }
 }
