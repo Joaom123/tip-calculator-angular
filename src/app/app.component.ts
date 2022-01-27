@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
 
   transformAmount(element: any) {
     let value: string = element.target.value;
-    value = value.replace(/[^0-9.,]/g, '');
+    value = value.replace(/[^0-9.]/g, '');
     const formattedAmount = this.currencyPipe.transform(value, '$', '', '1.2-2', 'en-US');
 
     this.tipCalculatorForm.get('bill')?.patchValue(formattedAmount);
