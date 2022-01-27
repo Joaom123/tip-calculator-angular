@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TipButtonComponent } from './tip-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { first } from 'rxjs/operators';
 
 describe('TipButtonComponent', () => {
   let component: TipButtonComponent;
