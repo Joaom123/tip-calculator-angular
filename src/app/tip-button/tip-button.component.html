@@ -1,4 +1,4 @@
-<div [formGroup]="form" [className]="isSelected() ? 'tipButton--checked' : ''" (click)="selectTip()">
+<div [formGroup]="form" [className]="isSelected() ? 'tipButton--checked' : ''" (click)="handleButtonClick()">
   <input type="radio" name="tip" [value]="tipValue" />
   <label>{{ tipValue }}%</label>
 </div>

@@ -15,7 +15,7 @@ export class TipButtonComponent {
   selectedTipValue: number = 0;
   form = new FormGroup({});
 
-  selectTip() {
+  handleButtonClick() {
     this.selectValue.emit(this.tipValue);
   }
 
