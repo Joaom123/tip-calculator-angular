@@ -272,4 +272,30 @@ describe('AppComponent', () => {
     typingOnCustomButton(tipCustomButtonDE, 30);
     expect(component.tipCalculatorForm.get('tip')?.value).toBe(30);
   });
+
+  it('should reset values after click on reset button', function () {
+    component.tipCalculatorForm.patchValue({
+      tip: 7,
+      bill: '120.00',
+      numberPeople: 2
+    });
+
+    let result = getTipAmountAndTotal();
+    expect(result.tipAmount).toBe(4.2);
+    expect(result.total).toBe(64.2);
+
+    const resetButtonDE = fixture.debugElement.query(By.css('#resetButton'));
+    resetButtonDE.triggerEventHandler('click', null);
+    fixture.detectChanges();
+
+    result = getTipAmountAndTotal();
+    expect(result.tipAmount).toBe(0);
+    expect(result.total).toBe(0);
+
+    expect(component.tipCalculatorForm.getRawValue()).toEqual({
+      tip: null,
+      bill: null,
+      numberPeople: null
+    });
+  });
 });
