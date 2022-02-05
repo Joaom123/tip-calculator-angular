@@ -7,8 +7,12 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./tip-button.component.css']
 })
 export class TipButtonComponent {
+  isSelected: boolean = false;
+
   @Input() tipValue!: number;
-  @Input() selectedValue!: number | null;
+  @Input() set selectedValue(value: number) {
+    this.isSelected = value === this.tipValue;
+  }
 
   @Output() selectValue = new EventEmitter<number>();
 
@@ -17,11 +21,5 @@ export class TipButtonComponent {
 
   handleButtonClick() {
     this.selectValue.emit(this.tipValue);
-  }
-
-  isSelected(): boolean {
-    if (!this.selectedValue) return false;
-
-    return this.selectedValue === this.tipValue;
   }
 }
